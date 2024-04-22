@@ -4,7 +4,7 @@ public class Main {
 
         String s1 = "hello world";
         System.out.println(s1.toUpperCase());
-        
+
 
     }
 }
