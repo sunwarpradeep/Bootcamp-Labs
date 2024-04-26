@@ -1,35 +1,11 @@
-package org.example;
-
+import java.util.Scanner;
 public class Book {
+
     private int id;
     private String isbn;
+    private String title;
     private boolean isCheckedOut;
     private String checkedOutTo;
-    private String bookTitle;
-    private String name;
-
-    public Book(int id, String isbn, boolean isCheckedOut, String checkedOutTo, String bookTitle) {
-        this.id = id;
-        this.isbn = isbn;
-        this.isCheckedOut = isCheckedOut;
-        this.checkedOutTo = checkedOutTo;
-        this.bookTitle = bookTitle;
-    }
-
-
-    public void checkOut(String name){
-        if(!isCheckedOut){
-            isCheckedOut = true;
-            checkedOutTo = name;
-            //bookTitle = title;
-        }
-    }
-
-    public void checkIn(){
-        if(isCheckedOut){
-            isCheckedOut = false;
-        }
-    }
 
     public int getId() {
         return id;
@@ -45,6 +21,14 @@ public class Book {
 
     public void setIsbn(String isbn) {
         this.isbn = isbn;
+    }
+
+    public String getTitle() {
+        return title;
+    }
+
+    public void setTitle(String title) {
+        this.title = title;
     }
 
     public boolean isCheckedOut() {
@@ -63,19 +47,43 @@ public class Book {
         this.checkedOutTo = checkedOutTo;
     }
 
-    public String getBookTitle() {
-        return bookTitle;
+    public void checkOut (){
+        Scanner scanner = new Scanner(System.in);
+        System.out.println("Enter your name: ");
+        String userName = scanner.nextLine();
+
+        isCheckedOut = true;
+        checkedOutTo = userName;
+
+        System.out.println("You have successfully checked out '" + title + "' with your name: " + checkedOutTo);
     }
 
-    public void setBookTitle(String bookTitle) {
-        this.bookTitle = bookTitle;
+    public void checkIn(){
+        this.checkedOutTo = "";
+        this.isCheckedOut = false;
     }
 
-    public String getName() {
-        return name;
+    public Book(int id, String isbn, String title, boolean isCheckedOut, String checkedOutTo) {
+        this.id = id;
+        this.isbn = isbn;
+        this.title = title;
+        this.isCheckedOut = isCheckedOut;
+        this.checkedOutTo = checkedOutTo;
     }
-
-    public void setName(String name) {
-        this.name = name;
+    public static void showAvailableBooks(Book[] books) {
+        for (Book book : books) {
+            if (!book.isCheckedOut) {
+                String bookInfo = "ID: " + book.getId() + ", ISBN: " + book.getIsbn() + ", Title: " + book.getTitle();
+                System.out.println(bookInfo);
+            }
+        }
+    }
+    public static void showCheckedOutBooks(Book[] books){
+        for (Book book : books){
+            if (book.isCheckedOut){
+                String bookInfo = "ID: " + book.getId() + ", ISBN: " + book.getIsbn() + ", Title: " + book.getTitle() + ", Checked out by: " + book.getCheckedOutTo();
+                System.out.println(bookInfo);
+            }
+        }
     }
 }
