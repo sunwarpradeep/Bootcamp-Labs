@@ -12,7 +12,7 @@ import java.util.Scanner;
                 double daysRented = scanner.nextDouble();
                 double basicCarRental = daysRented * 29.99;
 
-                System.out.println("Enter your age (Whole Numbers Only!).");
+                System.out.println("Enter your age.");
                 double userAge = scanner.nextDouble();
                 double surcharge = 0;
                 if (userAge < 25) {
@@ -54,7 +54,7 @@ import java.util.Scanner;
 
                 System.out.printf("Total Cost: %.2f%n", totalCost);
 
-                System.out.println("The basic car rental is $29.99 per day. There is a 30% surcharge on the basic car rental for drivers under 25. All Taxes have already been incorporated into the fees shown.");
+                System.out.println("The basic car rental is $29.99 per day. There is a 30% surcharge on the basic car rental for drivers under 25.");
 
             }
             public static double optionsCost(double tollCost, double gpsCost, double roadSideCost) {
