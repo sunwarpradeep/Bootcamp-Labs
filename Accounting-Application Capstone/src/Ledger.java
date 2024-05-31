@@ -6,7 +6,7 @@ import java.time.LocalTime;
 public class Ledger {
 
     private final LocalDate date;
-    private final LocalTime time;
+    private final LocalTime localTime;
     private String description;
     private String vendor;
     private double amount;
